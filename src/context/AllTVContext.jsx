@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { ENV } from '../env/env';
 
 const TVContext = createContext();
 
@@ -10,9 +11,9 @@ const AllTVContext = ({ children }) => {
     });
 
     const getAllMovies = async () => {
-        const API_KEY = `cd77a7698cf357650fa2e44bae3c25bc`;
+        const API_KEY = ENV.API_KEY;
         const filters = ["top_rated", "popular"];
-        const endpoint = `https://api.themoviedb.org/3/tv`;
+        const endpoint = ENV.TV_URL;
 
         try {
             const updatedTV = { ...tv };
@@ -22,7 +23,7 @@ const AllTVContext = ({ children }) => {
                 updatedTV[filter] = response.data.results;
             }
             setTV(updatedTV);
-            console.log("Updated Movies:", updatedTV); // Log the updated movies
+            //console.log("Updated Movies:", updatedTV); // Log the updated movies
         } catch (error) {
             console.error(error);
         }

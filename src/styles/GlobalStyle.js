@@ -112,5 +112,8 @@ ul{
   -webkit-text-fill-color: transparent;
 }
 
+.heading{
+    color: ${({theme})=>theme.colors.heading};
+}
 
 `;

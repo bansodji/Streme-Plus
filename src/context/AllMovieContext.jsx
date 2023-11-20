@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { ENV } from '../env/env';
 
 const MovieContext = createContext();
 
@@ -12,18 +13,18 @@ const AllMovieContext = ({ children }) => {
     });
 
     const getAllMovies = async () => {
-        const API_KEY = `cd77a7698cf357650fa2e44bae3c25bc`;
+        const API_KEY = ENV.API_KEY;
         const filters = ["top_rated", "popular", "upcoming", "now_playing"];
-        const endpoint = `https://api.themoviedb.org/3/movie`;
+        const endpoint = ENV.MOVIE_URL;
 
         try {
-            const updatedMovies = { ...movies };
-            for (let filter of filters) {
+            await Promise.all(filters.map(async (filter) => {
                 const response = await axios.get(`${endpoint}/${filter}?api_key=${API_KEY}`);
-                updatedMovies[filter] = response.data.results;
-            }
-            setMovies(updatedMovies);
-            console.log("Updated Movies:", updatedMovies); // Log the updated movies
+                setMovies(prevMovies => ({
+                    ...prevMovies,
+                    [filter]: response.data.results
+                }));
+            }));
         } catch (error) {
             console.error(error);
         }

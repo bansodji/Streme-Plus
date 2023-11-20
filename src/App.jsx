@@ -20,6 +20,7 @@ const App = () => {
   // #BE9E44
   // #1A1A1A
   // #E5D9B6
+  // #ef7b71
 
   const light = {
     colors: {
