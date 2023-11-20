@@ -1,49 +1,43 @@
 import React, { createContext, useEffect, useState } from 'react';
-import axios from 'axios'; // Make sure to import axios
+import axios from 'axios';
 
 const MovieContext = createContext();
 
-const AllMovieContext = ({ children }) => { // Include children as a parameter
-    const [movie, setMovie] = useState(null); // Set an initial state
+const AllMovieContext = ({ children }) => {
+    const [movies, setMovies] = useState({
+        top_rated: [],
+        popular: [],
+        upcoming: [],
+        now_playing: []
+    });
 
     const getAllMovies = async () => {
-        const options = {
-            method: 'GET',
-            url: 'https://ott-details.p.rapidapi.com/advancedsearch',
-            params: {
-              start_year: '1970',
-              end_year: '2020',
-              min_imdb: '6',
-              max_imdb: '7.8',
-              genre: 'action',
-              language: 'english',
-              type: 'movie',
-              sort: 'latest',
-              page: '1'
-            },
-            headers: {
-              'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-              'X-RapidAPI-Host': 'ott-details.p.rapidapi.com'
+        const API_KEY = `cd77a7698cf357650fa2e44bae3c25bc`;
+        const filters = ["top_rated", "popular", "upcoming", "now_playing"];
+        const endpoint = `https://api.themoviedb.org/3/movie`;
+
+        try {
+            const updatedMovies = { ...movies };
+            for (let filter of filters) {
+                const response = await axios.get(`${endpoint}/${filter}?api_key=${API_KEY}`);
+                updatedMovies[filter] = response.data.results;
             }
-          };
-          
-          try {
-              const response = await axios.request(options);
-              console.log(response.data);
-          } catch (error) {
-              console.error(error);
-          }
-    }
+            setMovies(updatedMovies);
+            console.log("Updated Movies:", updatedMovies); // Log the updated movies
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
         getAllMovies();
-    }, [])
+    }, []);
 
     return (
-        <MovieContext.Provider value={{ movie }}>
+        <MovieContext.Provider value={{ movies }}>
             {children}
         </MovieContext.Provider>
-    )
-}
+    );
+};
 
 export { MovieContext, AllMovieContext };
