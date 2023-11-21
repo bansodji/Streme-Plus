@@ -51,7 +51,7 @@ const MovieCard = ({ movie }) => {
         <Container className='px-1'>
             <Box>
                 <div className="box">
-                    <img src={poster_path} alt={movie.title} />
+                    <img src={poster_path} alt={movie.title} loading="lazy"/>
                 </div>
                 <div className="box-overlay fff"></div>
             </Box>

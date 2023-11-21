@@ -42,17 +42,9 @@ const ISkeleton = ({ ItemCount }) => {
     ));
 
     return (
-        <>
-            {/* <div className="container">
-                <div className="row">
-                    {skeletonItems}
-                </div>
-            </div> */}
-
-            <Slider {...settings}>
-                {skeletonItems}
-            </Slider>
-        </>
+        <Slider {...settings}>
+            {skeletonItems}
+        </Slider>
     );
 }
 
