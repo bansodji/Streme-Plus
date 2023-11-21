@@ -30,6 +30,7 @@ body {
 }
 
 .fff{color:#fff !important;}
+.fff-50{color:#aaaeb6 !important;}
 .fff-bg{background-color:#fff;}
 
 a{
