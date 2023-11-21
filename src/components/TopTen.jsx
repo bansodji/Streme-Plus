@@ -4,6 +4,7 @@ import { ENV } from '../env/env';
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import { RiArrowRightSLine } from "react-icons/ri";
+import ISkeleton from './ISkeleton';
 
 const Container = styled.div`
     
@@ -94,17 +95,23 @@ const TopTen = (props) => {
             </h6>
           </Link>
         </div>
-        <Slider {...settings}>
-          {
-            props.movies_list.map((data, index) => {
-              return (
-                <div key={index} style={{margin: "0 40px"}}>
-                  <TopTenCard movie={data} rank={index + 1} />
-                </div>
-              )
-            })
-          }
-        </Slider>
+        {
+          (props.movies_list.length == 0)
+            ? <ISkeleton ItemCount={10} />
+            :
+            <Slider {...settings}>
+              {
+                props.movies_list.map((data, index) => {
+                  return (
+                    <div key={index} style={{ margin: "0 40px" }}>
+                      <TopTenCard movie={data} rank={index + 1} />
+                    </div>
+                  )
+                })
+              }
+            </Slider>
+        }
+
       </div>
     </Container>
   )

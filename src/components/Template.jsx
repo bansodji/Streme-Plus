@@ -4,6 +4,7 @@ import MovieCard from './MovieCard';
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import { RiArrowRightSLine } from "react-icons/ri";
+import ISkeleton from './ISkeleton';
 
 const Container = styled.div`
     
@@ -37,6 +38,10 @@ const Template = (props) => {
             },
         ]
     };
+
+    if (props.movies_list.length == 0) {
+
+    }
     return (
         <Container className='my-4'>
             <div className="container-fluid">
@@ -45,21 +50,27 @@ const Template = (props) => {
                     <Link to={props.href}>
                         <h6 className='d-flex align-items-center hover'>
                             View All
-                            <span className='fs-5' style={{paddingBottom:5}}><RiArrowRightSLine /></span>
+                            <span className='fs-5' style={{ paddingBottom: 5 }}><RiArrowRightSLine /></span>
                         </h6>
                     </Link>
                 </div>
-                <Slider {...settings}>
-                    {
-                        props.movies_list.map((data, index) => {
-                            return (
-                                // <div key={index}>
-                                <MovieCard key={index} movie={data} />
-                                // </div>
-                            )
-                        })
-                    }
-                </Slider>
+                {
+                    (props.movies_list.length == 0)
+                        ? <ISkeleton ItemCount={10}/>
+                        :
+                        <Slider {...settings}>
+                            {
+                                props.movies_list.map((data, index) => {
+                                    return (
+                                        // <div key={index}>
+                                        <MovieCard key={index} movie={data} />
+                                        // </div>
+                                    )
+                                })
+                            }
+                        </Slider>
+                }
+
             </div>
         </Container>
     )
