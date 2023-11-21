@@ -29,7 +29,7 @@ body {
     background-color: ${({ theme }) => theme.colors.surface};
 }
 
-.fff{color:#fff;}
+.fff{color:#fff !important;}
 .fff-bg{background-color:#fff;}
 
 a{
