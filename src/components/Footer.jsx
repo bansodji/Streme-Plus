@@ -25,7 +25,7 @@ const Footer = () => {
       <div className="container-fluid text-center">
         <p className='text-center'>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
         <a href="https://www.themoviedb.org" target='_blank'>
-          <img src="/images/tmdb_logo.svg" alt="" />
+          <img src="/images/tmdb_logo.png" alt="This product uses the TMDb API but is not endorsed or certified by TMDb." loading='lazy'/>
         </a>
       </div>
       <div className='spaces'></div>
