@@ -7,7 +7,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import ISkeleton from './ISkeleton';
 
 const Container = styled.div`
-    
+
 `;
 
 const Template = (props) => {

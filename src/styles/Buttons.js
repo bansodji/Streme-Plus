@@ -2,17 +2,17 @@ import styled from "styled-components";
 
 export const SubscribeBtn = styled.button`
     /* width: 110px; */
-    color: ${({theme})=>theme.colors.gold};
-    background-color: ${({theme})=>theme.colors.gold_};
+    color: ${({ theme }) => theme.colors.gold};
+    background-color: ${({ theme }) => theme.colors.gold_};
     font-size: 12px;
-    border: 1px solid ${({theme})=>theme.colors.gold};
+    border: 1px solid ${({ theme }) => theme.colors.gold};
     border-radius: 5px;
     outline: none;
     padding: 2px 8px;
 
     &:hover{
-        color: ${({theme})=>theme.colors.gold};
-        background-color: ${({theme})=>theme.colors.gold_};
+        color: ${({ theme }) => theme.colors.gold};
+        background-color: ${({ theme }) => theme.colors.gold_};
     }   
 
 
@@ -60,4 +60,23 @@ export const GradientButton = styled.button`
         #fbb03b
       );
       box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+`;
+
+export const WhiteButton = styled.button`
+  background-color: ${({ theme }) => theme.colors.white};
+  border: none;
+  outline: none;
+  padding: 0;
+  font-size: 1rem;
+  padding: 6px 10px;
+  width: 100%;
+  color: ${({ theme }) => theme.colors.black};
+  border-radius: 8px;
+  font-weight: 500;
+
+  svg{
+    color: ${({ theme }) => theme.colors.heading_};
+    padding-bottom: 2px;
+    font-size: 1.2rem;
+  }
 `;

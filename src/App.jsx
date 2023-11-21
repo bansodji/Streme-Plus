@@ -6,6 +6,11 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import "./styles/slick_slider.css";
 import Footer from './components/Footer';
+import Movies from './pages/Movies';
+import TV from './pages/TV';
+import WatchNow from './pages/WatchNow';
+import User from './pages/User';
+import Search from './pages/Search';
 
 const Main = styled.main`
     margin-left: ${({ theme }) => theme.other.layout};
@@ -32,6 +37,7 @@ const App = () => {
       body: "#f1f1f1",
       surface: "#ffffff",
       heading: "#1d2127",
+      heading_: "#fff",
       text: "#1d2127",
       white: "#fff",
       black: "#000",
@@ -65,6 +71,7 @@ const App = () => {
       surface: "#252930",
       // heading: "#d1d7e0",
       heading: "#fff",
+      heading_: "#1d2127",
       text: "#aaaeb6",
       white: "#fff",
       black: "#000",
@@ -74,6 +81,7 @@ const App = () => {
       moon: "#f5f6fa",
       active: "#fff",
       footer: "#101317",
+
     },
     other: {
       boxShadow: "0px 0px 3.6px rgba(0, 0, 0, 0.017),0px 0px 10px rgba(0, 0, 0, 0.025),0px 0px 24.1px rgba(0, 0, 0, 0.033),0px 0px 80px rgba(0, 0, 0, 0.05)",
@@ -104,6 +112,11 @@ const App = () => {
       <Main>
         <Routes>
           <Route exact path='/' element={<Home />} />
+          <Route exact path='/movies' element={<Movies/>} />
+          <Route exact path='/tv' element={<TV/>} />
+          <Route exact path='/watchnow' element={<WatchNow/>} />
+          <Route exact path='/user' element={<User/>} />
+          <Route exact path='/search' element={<Search/>} />
           <Route path="*" element={<Home />} />
         </Routes>
         <Footer />

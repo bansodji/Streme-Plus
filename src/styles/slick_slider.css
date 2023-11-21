@@ -12,3 +12,15 @@
         display: none !important;
     }
 }
+
+.slick-list {
+    /* overflow: visible !important; */
+  }
+  
+  .slick-track {
+    overflow: visible !important;
+  }
+  
+  .slick-slide {
+    overflow: visible !important;
+  }

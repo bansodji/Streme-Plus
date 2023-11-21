@@ -21,7 +21,7 @@ const Home = () => {
       <Template title="Trending" movies_list={movies.popular} href="viewall/trending" />
       <Template title="Coming Soon" movies_list={movies.upcoming} href="viewall/commingsoon" />
       <Template title="Top Rated" movies_list={movies.top_rated} href="viewall/toprated" />
-      <Template title="Popular TV Series" movies_list={tv.top_rated} href="viewall/tv" />
+      <Template title="Popular TV Series" movies_list={tv.popular} href="viewall/tv" />
       <TopTen title="Top 20 Series" movies_list={top10TV} href="viewall/top10" />
     </>
   );

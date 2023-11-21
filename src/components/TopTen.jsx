@@ -14,6 +14,7 @@ const CardContainer = styled.div`
     width: 100%;
     height: 14rem;
     border-radius: 4px !important;
+    cursor: pointer;
 
     @media(max-width: ${({ theme }) => theme.screen.sm}){
         height: 9rem;
@@ -127,14 +128,16 @@ const TopTenCard = ({ movie, rank }) => {
 
   return (
     <CardContainer className='px-1'>
-      <Box>
-        <div className="box">
-          <img src={poster_path} alt={movie.title} loading="lazy"/>
-        </div>
-        <div className="box-overlay fff">
-          <h1 className='rank display-1'>{rank}</h1>
-        </div>
-      </Box>
+      <Link to={`/watchnow?id=${movie.id}`}>
+        <Box>
+          <div className="box">
+            <img src={poster_path} alt={movie.title} loading="lazy" />
+          </div>
+          <div className="box-overlay fff">
+            <h1 className='rank display-1'>{rank}</h1>
+          </div>
+        </Box>
+      </Link>
     </CardContainer>
   );
 }
