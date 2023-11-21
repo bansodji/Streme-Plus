@@ -27,7 +27,6 @@ const Wrapper = styled.section`
     background-size: 2500px, 800px, 500px 200px, 1000px, 400px 260px;
     animation: 90s para infinite linear;
     padding: 190px 0;
-
     
   }
   .img-banner-bg-2 {
@@ -43,7 +42,8 @@ const Wrapper = styled.section`
 
   @media (max-width: ${({ theme }) => theme.screen.md}) {
     .img-banner-bg-1, .img-banner-bg-2{
-      height: 20vh !important;
+      /* height: 200px !important;
+      background-size: cover; */
     }    
   }
 
