@@ -4,6 +4,8 @@ import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/GlobalStyle';
 import Home from './pages/Home';
 import Header from './components/Header';
+import "./styles/slick_slider.css";
+import Footer from './components/Footer';
 
 const Main = styled.main`
     margin-left: ${({ theme }) => theme.other.layout};
@@ -60,7 +62,8 @@ const App = () => {
       theme2a: "#fab65d57",
       body: "#1d2127",
       surface: "#252930",
-      heading: "#d1d7e0",
+      // heading: "#d1d7e0",
+      heading: "#fff",
       text: "#aaaeb6",
       white: "#fff",
       black: "#000",
@@ -102,6 +105,7 @@ const App = () => {
           <Route path="*" element={<Home />} />
         </Routes>
       </Main>
+      <Footer/>
     </ThemeProvider>
   )
 }

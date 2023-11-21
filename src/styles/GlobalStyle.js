@@ -113,7 +113,10 @@ ul{
 }
 
 .heading{
-    color: ${({theme})=>theme.colors.heading};
+    color: ${({ theme }) => theme.colors.heading};
+}
+.hover:hover{
+    color: ${({ theme }) => theme.colors.heading};
 }
 
 `;

@@ -5,9 +5,10 @@ import { ENV } from '../env/env';
 const Container = styled.div`
     width: 100%;
     height: 14rem;
+    border-radius: 4px !important;
 
     @media(max-width: ${({theme})=>theme.screen.sm}){
-        height: 10rem;
+        height: 9rem;
     }
 `;
 
@@ -20,12 +21,12 @@ const Box = styled.div`
     .box{
         width: inherit;
         height: inherit;
-        border-radius: inherit;
+        border-radius: 4px;
         img{
-            border-radius: inherit;
+            border-radius: 4px !important;
             width: inherit;
             height: inherit;
-            object-fit: scale-down;
+            object-fit: cover;
         }
     }
 
@@ -47,7 +48,7 @@ const MovieCard = ({ movie }) => {
     }
 
     return (
-        <Container>
+        <Container className='px-1'>
             <Box>
                 <div className="box">
                     <img src={poster_path} alt={movie.title} />

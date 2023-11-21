@@ -1,0 +1,14 @@
+.slick-slider .slick-prev{
+    z-index: 1;
+    left: 10px;
+}
+.slick-slider .slick-next{
+    z-index: 1;
+    right: 10px;    
+}
+
+@media(max-width:992px){
+    .slick-slider .slick-prev, .slick-slider .slick-next{
+        display: none !important;
+    }
+}
