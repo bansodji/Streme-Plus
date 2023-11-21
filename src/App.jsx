@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 const Main = styled.main`
     margin-left: ${({ theme }) => theme.other.layout};
     
-    @media(max-width: ${({theme})=>theme.screen.md} ){
+    @media(max-width: ${({ theme }) => theme.screen.md} ){
       margin-left: 0;
     }
 `;
@@ -35,11 +35,12 @@ const App = () => {
       text: "#1d2127",
       white: "#fff",
       black: "#000",
-      gold: "#996515",
+      gold: "#BE9E44",
       gold_: "#9964151c",
       sun: "#feca57",
       moon: "#2c3e50",
       active: "#000",
+      footer: "#101317",
     },
     other: {
       boxShadow: "0px 0px 3.6px rgba(0, 0, 0, 0.017),0px 0px 10px rgba(0, 0, 0, 0.025),0px 0px 24.1px rgba(0, 0, 0, 0.033),0px 0px 80px rgba(0, 0, 0, 0.05)",
@@ -67,11 +68,12 @@ const App = () => {
       text: "#aaaeb6",
       white: "#fff",
       black: "#000",
-      gold: "#D8C690",
+      gold: "#BE9E44",
       gold_: "#9964151c",
       sun: "#f5f6fa",
       moon: "#f5f6fa",
       active: "#fff",
+      footer: "#101317",
     },
     other: {
       boxShadow: "0px 0px 3.6px rgba(0, 0, 0, 0.017),0px 0px 10px rgba(0, 0, 0, 0.025),0px 0px 24.1px rgba(0, 0, 0, 0.033),0px 0px 80px rgba(0, 0, 0, 0.05)",
@@ -104,8 +106,8 @@ const App = () => {
           <Route exact path='/' element={<Home />} />
           <Route path="*" element={<Home />} />
         </Routes>
+        <Footer />
       </Main>
-      <Footer/>
     </ThemeProvider>
   )
 }

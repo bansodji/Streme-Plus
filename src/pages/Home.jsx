@@ -7,20 +7,22 @@ import { TenStackContext } from '../context/TopTenContext';
 import TopTen from '../components/TopTen';
 
 const Home = () => {
-  const {movies} = useContext(MovieContext);
-  const {tv} = useContext(TVContext);
-  const {top10Movie, top10TV} = useContext(TenStackContext);
+  const { movies } = useContext(MovieContext);
+  const { tv } = useContext(TVContext);
+  const { top10Movie, top10TV } = useContext(TenStackContext);
 
   return (
     <>
       <Hero />
-      <Template title="Now Playing" movies_list={movies.now_playing} href="viewall/nowplaying" />
-      <TopTen title="Top 20 Movies" movies_list={top10Movie} href="viewall/top10"/>
+      <div id='NowPlaying'>
+        <Template title="Now Playing" movies_list={movies.now_playing} href="viewall/nowplaying" />
+      </div>
+      <TopTen title="Top 20 Movies" movies_list={top10Movie} href="viewall/top10" />
       <Template title="Trending" movies_list={movies.popular} href="viewall/trending" />
       <Template title="Coming Soon" movies_list={movies.upcoming} href="viewall/commingsoon" />
       <Template title="Top Rated" movies_list={movies.top_rated} href="viewall/toprated" />
       <Template title="Popular TV Series" movies_list={tv.top_rated} href="viewall/tv" />
-      <TopTen title="Top 20 Series" movies_list={top10TV} href="viewall/top10"/>
+      <TopTen title="Top 20 Series" movies_list={top10TV} href="viewall/top10" />
     </>
   );
 }

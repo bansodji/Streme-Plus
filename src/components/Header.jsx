@@ -26,7 +26,7 @@ const HeaderLg = styled.div`
     position: fixed;
     .brand{
         img{
-            width: 90px;
+            width: 100px;
             filter: drop-shadow(red 1px 1px 20px);
         }
     }
@@ -55,11 +55,15 @@ const HeaderSm = styled.div`
     display: none !important;
     .nav-list{
         z-index: 9999;
-        width: 100%;
+        width: 94%;
+        border-radius: 30px;
         background-color: ${({ theme }) => theme.colors.surface};
         position: fixed;
-        bottom: 0;
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 1.8rem;
+        box-shadow: ${({ theme }) => theme.other.boxShadow};
     }
 
     @media(max-width:${({ theme }) => theme.screen.md}){
@@ -148,15 +152,18 @@ const Header = ({ setTheme, light, dark }) => {
                 </div>
                 <div>
                     <ThemeSwitchIcon />
-                </div>                
+                </div>
             </HeaderLg>
-            
+
             <HeaderSm>
                 <div className='appbar d-flex align-items-center justify-content-between px-2'>
                     <Link to="/" className='brand'>
                         <img src="/images/logo.png" alt="Streme+" />
                     </Link>
-                    <ThemeSwitchIcon />
+                    <div className='d-flex align-items-center'>
+                        <Link to="/subscribe"><SubscribeBtn>Subscribe</SubscribeBtn></Link>
+                        <ThemeSwitchIcon />
+                    </div>
                 </div>
                 <ul className='nav-list d-flex justify-content-between px-4'>
                     {

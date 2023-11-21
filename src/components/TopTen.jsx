@@ -70,7 +70,6 @@ const TopTen = (props) => {
           slidesToShow: 5,
           slidesToScroll: 5,
           infinite: true,
-          dots: true
         }
       },
       {

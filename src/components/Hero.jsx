@@ -68,7 +68,7 @@ const Hero = () => {
         {/* Hero items */}
         <div className='hero-items'>
           <p className='fs-2 fff'>DISCOVER UNLIMITED MOVIES TV SHOWS, WEB SERIES ONLY ON VIDEOSPIRE</p>
-          <GradientButton>Discover Now</GradientButton>
+          <a href='#NowPlaying'><GradientButton>Discover Now</GradientButton></a>
         </div>
       </div>
     </Wrapper>

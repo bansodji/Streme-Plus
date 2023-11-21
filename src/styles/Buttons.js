@@ -5,10 +5,10 @@ export const SubscribeBtn = styled.button`
     color: ${({theme})=>theme.colors.gold};
     background-color: ${({theme})=>theme.colors.gold_};
     font-size: 12px;
-    border-radius: 20px;
-    border: none;
+    border: 1px solid ${({theme})=>theme.colors.gold};
+    border-radius: 5px;
     outline: none;
-    padding: 4px 8px;
+    padding: 2px 8px;
 
     &:hover{
         color: ${({theme})=>theme.colors.gold};
