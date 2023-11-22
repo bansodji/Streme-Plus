@@ -46,11 +46,11 @@ const Box = styled.div`
         top: 0;
 
         .rank{
-          font-weight: 600;
           position: absolute;
+          font-weight: 600;
           top:110%;
           left: 0;
-          transform: translateY(-110%);
+          transform: translateY(-100%);
           text-shadow: 2px 2px #000;
         }
     }
