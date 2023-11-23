@@ -63,7 +63,7 @@ export const GradientButton = styled.button`
 `;
 
 export const WhiteButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.button.btn_bg_1};
   border: none;
   outline: none;
   padding: 0;
@@ -71,7 +71,7 @@ export const WhiteButton = styled.button`
   padding: 6px 10px;
   width: 100%;
   height: 3rem;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.button.btn_1};
   border-radius: 8px;
   font-weight: 500;
 

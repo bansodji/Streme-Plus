@@ -50,6 +50,10 @@ const App = () => {
       footer: "#101317",
       grey: "#3f4043",
     },
+    button: {
+      btn_bg_1: "#101317",
+      btn_1: "#fff",
+    },
     other: {
       boxShadow: "0px 0px 3.6px rgba(0, 0, 0, 0.017),0px 0px 10px rgba(0, 0, 0, 0.025),0px 0px 24.1px rgba(0, 0, 0, 0.033),0px 0px 80px rgba(0, 0, 0, 0.05)",
       transitionFast: "300ms",
@@ -70,8 +74,8 @@ const App = () => {
       theme2: "#fab75d",
       theme2a: "#fab65d57",
       body: "#1d2127",
-      surface: "#252930",
-      surface_50: "#2529306d",
+      surface: "#2e323a",
+      surface_50: "#2e323a6d",
       // heading: "#d1d7e0",
       heading: "#fff",
       heading_: "#1d2127",
@@ -85,6 +89,10 @@ const App = () => {
       active: "#fff",
       footer: "#101317",
       grey: "#3f4043",
+    },
+    button: {
+      btn_bg_1: "#fff",
+      btn_1: "#101317",
     },
     other: {
       boxShadow: "0px 0px 3.6px rgba(0, 0, 0, 0.017),0px 0px 10px rgba(0, 0, 0, 0.025),0px 0px 24.1px rgba(0, 0, 0, 0.033),0px 0px 80px rgba(0, 0, 0, 0.05)",

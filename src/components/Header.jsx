@@ -166,7 +166,7 @@ const Header = ({ setTheme, light, dark }) => {
                         <ThemeSwitchIcon />
                     </div>
                 </div>
-                <ul className='nav-list d-flex justify-content-between px-4'>
+                <ul className='nav-list d-flex justify-content-between px-3'>
                     {
                         NavList.map((data, index) => {
                             let link = (data == "home") ? "/" : data.replace(/ /g, "");
@@ -174,12 +174,14 @@ const Header = ({ setTheme, light, dark }) => {
                             return (
                                 <li
                                     key={index}
-                                    className={`py-1 hover ${pathname == link ? "active" : ""}`}
+                                    className={` hover ${pathname == link ? "active" : ""}`}
                                 >
                                     <Link
                                         to={link}
+                                        className='d-flex flex-column align-items-center py-1'
                                     >
-                                        {pathname == link ? NavListSolid[data] : NavListOutline[data]}
+                                        <span className='d-flex'>{pathname == link ? NavListSolid[data] : NavListOutline[data]}</span>
+                                        <span className='font12 title font-400'>{data=="tv"?"TV":data}</span>
                                     </Link>
                                 </li>
                             )
