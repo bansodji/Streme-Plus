@@ -70,6 +70,7 @@ export const WhiteButton = styled.button`
   font-size: 1rem;
   padding: 6px 10px;
   width: 100%;
+  height: 3rem;
   color: ${({ theme }) => theme.colors.black};
   border-radius: 8px;
   font-weight: 500;
@@ -79,4 +80,13 @@ export const WhiteButton = styled.button`
     padding-bottom: 2px;
     font-size: 1.2rem;
   }
+`;
+
+export const SqIconBtn = styled.button`
+  width: 3.5rem;
+  height: 3rem;
+  border-radius: 10px;
+  border: none;
+  background-color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colors.white};
 `;

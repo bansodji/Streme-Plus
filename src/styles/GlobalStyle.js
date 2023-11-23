@@ -120,4 +120,14 @@ ul{
     color: ${({ theme }) => theme.colors.heading};
 }
 
+.overflow-hidden{
+    overflow: hidden !important;
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Creates 5 columns */
+  gap: 10px; /* Adjust the gap between elements */
+}
+
 `;

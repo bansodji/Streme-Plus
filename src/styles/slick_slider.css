@@ -14,8 +14,9 @@
 }
 
 .slick-list {
-    /* overflow: visible !important; */
-  }
+  /* overflow: visible !important; */
+
+}
   
   .slick-track {
     overflow: visible !important;
@@ -23,4 +24,8 @@
   
   .slick-slide {
     overflow: visible !important;
+  }
+
+  .slick-arrow{
+    z-index: 100 !important;
   }

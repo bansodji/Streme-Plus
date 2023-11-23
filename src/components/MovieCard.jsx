@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ENV } from '../env/env';
-import { WhiteButton } from '../styles/Buttons';
 import { Link } from 'react-router-dom';
-import { IoPlay } from "react-icons/io5";
-import TruncatedText from './TruncatedText';
 
 const Container = styled.div`
     width: 100%;
@@ -25,6 +22,8 @@ const Box = styled.div`
     
     &:hover > .box-hover{
         display: block;
+        transform: scale(1.2);
+        /* transform-origin: top ; */
     }
 
     @media(max-width: ${({ theme }) => theme.screen.md}){
@@ -59,7 +58,8 @@ const Box = styled.div`
 
 `;
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, id, template_id }) => {
+    //==creating movie image path start=== 
     const baseImageUrl = ENV.IMAGE_BASE_URL;
     const posterSize = ENV.POSTER_SIZE;
     let poster_path = "";
@@ -69,9 +69,19 @@ const MovieCard = ({ movie }) => {
         poster_path = `${baseImageUrl}${posterSize}${movie.poster_path}`;
         backdrop_path = `${baseImageUrl}${posterSize}${movie.backdrop_path}`;
     }
+    //==creating movie image path end=== 
+
+    const handleMouseEnter = (event, movieCardId, hoverCardId) => {
+        const HoverMovieCard = document.getElementById(hoverCardId);
+        HoverMovieCard.style.visibility = "visible";
+    }
 
     return (
-        <Container className='px-1'>
+        <Container
+            id={`${template_id}-movie-card-${id}`}
+            className='px-1'
+            onMouseEnter={(event) => { handleMouseEnter(event, `${template_id}-movie-card-${id}`, `${template_id}-hover-card-${id}`) }}
+        >
             <Link to={`/watchnow?id=${movie.id}`}>
                 <Box>
                     <div className="box">
@@ -80,6 +90,7 @@ const MovieCard = ({ movie }) => {
                     <div className="box-overlay fff"></div>
                 </Box>
             </Link>
+
         </Container>
     )
 }

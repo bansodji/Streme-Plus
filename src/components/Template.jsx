@@ -5,9 +5,10 @@ import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import { RiArrowRightSLine } from "react-icons/ri";
 import ISkeleton from './ISkeleton';
+import { MovieDetailsModal } from './Modal';
 
 const Container = styled.div`
-
+    position: relative;
 `;
 
 const Template = (props) => {
@@ -15,8 +16,8 @@ const Template = (props) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 7,
-        slidesToScroll: 7,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         lazyLoad: true,
         responsive: [
             {
@@ -55,19 +56,35 @@ const Template = (props) => {
                 </div>
                 {
                     (props.movies_list.length == 0)
-                        ? <ISkeleton ItemCount={10}/>
+                        ? <ISkeleton ItemCount={10} />
                         :
-                        <Slider {...settings}>
-                            {
-                                props.movies_list.map((data, index) => {
-                                    return (
-                                        // <div key={index}>
-                                        <MovieCard key={index} movie={data} />
-                                        // </div>
-                                    )
-                                })
-                            }
-                        </Slider>
+                        <>
+                            <Slider {...settings}>
+                                {
+                                    props.movies_list.map((data, index) => {
+                                        return (
+                                            // <div key={index}>
+                                            <MovieCard key={index} movie={data} template_id={props.template_id} id={index} />
+                                            // </div>
+                                        )
+                                    })
+                                }
+                            </Slider>
+                            <div className='hover-track'>
+                                <div className='grid-5 w-100 h-100'>
+                                    {
+                                        props.movies_list.map((data, index) => {
+                                            return (
+                                                // <div className="col-2" key={index} >
+                                                    <MovieDetailsModal key={index} movie={data} template_id={props.template_id} id={`hover-card-${index}`} />
+                                                // </div>
+                                            )
+                                        })
+                                    }
+
+                                </div>
+                            </div>
+                        </>
                 }
 
             </div>
