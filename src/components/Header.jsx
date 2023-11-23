@@ -24,6 +24,7 @@ const HeaderLg = styled.div`
     width: ${({ theme }) => theme.other.layout};
     height: 100vh;
     position: fixed;
+    top: 0;
     .brand{
         img{
             width: 100px;
