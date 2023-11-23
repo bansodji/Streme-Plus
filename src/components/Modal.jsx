@@ -118,13 +118,14 @@ const MovieDetailsModal = ({ movie, id, template_id }) => {
                         <div className='my-3'>
                             <h6 className='text-center'>
                                 <span>{release_year}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
-                                <span>{movie.original_language}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
+                                <span>{/* {movie.original_language} */}English</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
                                 <TiStarFullOutline className='star' /><span id='Rating'>8.7</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
                                 <span>{movie.adult ? "A" : "UA"}</span>
                             </h6>
                         </div>
                         <div className='text'>
-                            <p><TruncatedText text={movie.overview} maxLength={90} /></p>
+                            <h6 className='heading'>{movie.title}</h6>
+                            <p><TruncatedText text={movie.overview} maxLength={80} /></p>
                         </div>
                     </div>
                 </div>

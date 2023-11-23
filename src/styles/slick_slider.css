@@ -29,3 +29,8 @@
   .slick-arrow{
     z-index: 100 !important;
   }
+
+  .slick-arrow::before{
+    color: #f1584a !important;
+    /* background-color: red !important; */
+  }
