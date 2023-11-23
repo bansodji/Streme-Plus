@@ -9,11 +9,11 @@ const TV = () => {
     const { top10TV } = useContext(TenStackContext);
 
     return (
-        <>
-            <Template title="Popular TV Series" movies_list={tv.popular} href="viewall/tv" />
-            <Template title="Top Rated TV Series" movies_list={tv.top_rated} href="viewall/tv" />
-            <TopTen title="Top 20 Series" movies_list={top10TV} href="viewall/top10" />
-        </>
+        <div className='container'>
+            <Template template_id={"tv-pts"} title="Popular TV Series" movies_list={tv.popular} href="viewall/tv" />
+            <Template template_id={"tv-trts"} title="Top Rated TV Series" movies_list={tv.top_rated} href="viewall/tv" />
+            <TopTen template_id={"tv-t10"} title="Top 20 Series" movies_list={top10TV} href="viewall/top10" />
+        </div>
     )
 }
 

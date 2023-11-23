@@ -71,16 +71,25 @@ const MovieCard = ({ movie, id, template_id }) => {
     }
     //==creating movie image path end=== 
 
+    //===handle mouse hover start===
+    let hoverTimer;
     const handleMouseEnter = (event, movieCardId, hoverCardId) => {
-        const HoverMovieCard = document.getElementById(hoverCardId);
-        HoverMovieCard.style.visibility = "visible";
+        hoverTimer = setTimeout(() => {
+            const HoverMovieCard = document.getElementById(hoverCardId);
+            HoverMovieCard.style.visibility = "visible";
+        }, 700);
     }
+    const handleMouseLeave = () => {        
+        clearTimeout(hoverTimer);
+    }
+    //===handle mouse hover end===
 
     return (
         <Container
             id={`${template_id}-movie-card-${id}`}
             className='px-1'
             onMouseEnter={(event) => { handleMouseEnter(event, `${template_id}-movie-card-${id}`, `${template_id}-hover-card-${id}`) }}
+            onMouseLeave={(event) => { handleMouseLeave() }}
         >
             <Link to={`/watchnow?id=${movie.id}`}>
                 <Box>

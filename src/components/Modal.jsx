@@ -12,16 +12,26 @@ import { ENV } from '../env/env';
 
 const MovieDetailsModalContainer = styled.div`
     z-index: 1;
-    cursor: pointer;
-    width: 20rem;
-    height: 23rem;
-    border-radius: 20px;
-    background-color: ${({ theme }) => theme.colors.surface};
     position: absolute;
     top: 0;
-    overflow: hidden;
-    /* display: none; */
     visibility: hidden;
+    /* display: none; */
+
+    @media(max-width:${({ theme }) => theme.screen.lg}){
+        display: none;
+    }
+
+    .modal-container{
+        cursor: pointer;
+        width: 20rem;
+        height: 23rem;
+        border-radius: 20px;
+        background-color: ${({ theme }) => theme.colors.surface};  
+        overflow: hidden;      
+        position: absolute;
+        left: 12%;
+        transform: translateX(-12%);
+    }
     
     .poster{
         width:100%;
@@ -62,7 +72,7 @@ const MovieDetailsModalContainer = styled.div`
 
 `;
 
-const MovieDetailsModal = ({ movie, id,template_id }) => {
+const MovieDetailsModal = ({ movie, id, template_id }) => {
     //==creating movie image path start=== 
     const baseImageUrl = ENV.IMAGE_BASE_URL;
     const posterSize = ENV.POSTER_SIZE;
@@ -87,33 +97,35 @@ const MovieDetailsModal = ({ movie, id,template_id }) => {
                 id={`${template_id}-${id}`}
                 onMouseLeave={() => { handleMouseLeave() }}
             >
-                <div className='poster'>
-                    <img className='poster-img' src={backdrop_path} alt="movie title" loading="lazy" />
-                </div>
-                <div className='details p-3'>
-                    <div className='d-flex buttons'>
-                        <Link className='w-100' to={`watchnow??id=${movie.id}`}>
-                            <WhiteButton>
-                                <IoPlay />
-                                Watch Now
-                            </WhiteButton>
-                        </Link>
-                        <Tooltip title="Watchlist" placement="top">
-                            <SqIconBtn className='ms-2'>
-                                <FaPlus />
-                            </SqIconBtn>
-                        </Tooltip>
+                <div className='modal-container'>
+                    <div className='poster'>
+                        <img className='poster-img' src={backdrop_path} alt="movie title" loading="lazy" />
                     </div>
-                    <div className='my-3'>
-                        <h6 className='text-center'>
-                            <span>{release_year}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
-                            <span>{movie.original_language}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
-                            <TiStarFullOutline className='star' /><span id='Rating'>8.7</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
-                            <span>{movie.adult ? "A" : "UA"}</span>
-                        </h6>
-                    </div>
-                    <div className='text'>
-                        <p><TruncatedText text={movie.overview} maxLength={90} /></p>
+                    <div className='details p-3'>
+                        <div className='d-flex buttons'>
+                            <Link className='w-100' to={`watchnow?id=${movie.id}`}>
+                                <WhiteButton>
+                                    <IoPlay />
+                                    Watch Now
+                                </WhiteButton>
+                            </Link>
+                            <Tooltip title="Watchlist" placement="top">
+                                <SqIconBtn className='ms-2'>
+                                    <FaPlus />
+                                </SqIconBtn>
+                            </Tooltip>
+                        </div>
+                        <div className='my-3'>
+                            <h6 className='text-center'>
+                                <span>{release_year}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
+                                <span>{movie.original_language}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
+                                <TiStarFullOutline className='star' /><span id='Rating'>8.7</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
+                                <span>{movie.adult ? "A" : "UA"}</span>
+                            </h6>
+                        </div>
+                        <div className='text'>
+                            <p><TruncatedText text={movie.overview} maxLength={90} /></p>
+                        </div>
                     </div>
                 </div>
             </MovieDetailsModalContainer>
