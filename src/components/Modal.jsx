@@ -29,8 +29,8 @@ const MovieDetailsModalContainer = styled.div`
         background-color: ${({ theme }) => theme.colors.surface};  
         overflow: hidden;      
         position: absolute;
-        left: 12%;
-        transform: translateX(-12%);
+        left: 14%;
+        transform: translateX(-14%);
     }
     
     .poster{
@@ -86,6 +86,7 @@ const MovieDetailsModal = ({ movie, id, template_id }) => {
     //==creating movie image path end===
 
     const release_year = new Date(movie.release_date).getFullYear().toString();
+    const first_air_date = new Date(movie.first_air_date).getFullYear().toString();
 
     const handleMouseLeave = () => {
         let MovieDetailsModal = document.getElementById(`${template_id}-${id}`);
@@ -117,14 +118,14 @@ const MovieDetailsModal = ({ movie, id, template_id }) => {
                         </div>
                         <div className='my-3'>
                             <h6 className='text-center'>
-                                <span>{release_year}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
+                                <span>{release_year == "NaN" ? first_air_date : release_year}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
                                 <span>{/* {movie.original_language} */}English</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
-                                <TiStarFullOutline className='star' /><span id='Rating'>8.7</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
+                                <TiStarFullOutline className='star' /><span id='Rating'>{movie.vote_average.toFixed(1)}</span>&nbsp; <span className='dot'><GoDotFill /></span> &nbsp;
                                 <span>{movie.adult ? "A" : "UA"}</span>
                             </h6>
                         </div>
                         <div className='text'>
-                            <h6 className='heading'>{movie.title}</h6>
+                            <h6 className='heading'>{(movie.title == undefined) ? movie.original_name : movie.title}</h6>
                             <p><TruncatedText text={movie.overview} maxLength={80} /></p>
                         </div>
                     </div>

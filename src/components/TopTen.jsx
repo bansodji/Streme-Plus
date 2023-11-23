@@ -5,9 +5,10 @@ import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import { RiArrowRightSLine } from "react-icons/ri";
 import ISkeleton from './ISkeleton';
+import { MovieDetailsModal } from './Modal';
 
 const Container = styled.div`
-    
+    position: relative;
 `;
 
 const CardContainer = styled.div`
@@ -61,8 +62,8 @@ const TopTen = (props) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     lazyLoad: true,
     responsive: [
       {
@@ -99,17 +100,31 @@ const TopTen = (props) => {
           (props.movies_list.length == 0)
             ? <ISkeleton ItemCount={10} />
             :
-            <Slider {...settings}>
-              {
-                props.movies_list.map((data, index) => {
-                  return (
-                    <div key={index} style={{ margin: "0 40px" }}>
-                      <TopTenCard movie={data} rank={index + 1} />
-                    </div>
-                  )
-                })
-              }
-            </Slider>
+            <>
+              <Slider {...settings}>
+                {
+                  props.movies_list.map((data, index) => {
+                    return (
+                      <div key={index} style={{ margin: "0 40px" }}>
+                        <TopTenCard movie={data} rank={index + 1} template_id={props.template_id} id={index} />
+                      </div>
+                    )
+                  })
+                }
+              </Slider>
+              <div className='hover-track'>
+                <div className='grid-5 w-100 h-100'>
+                  {
+                    props.movies_list.map((data, index) => {
+                      return (
+                        <MovieDetailsModal key={index} movie={data} template_id={props.template_id} id={`hover-card-${index}`} />
+                      )
+                    })
+                  }
+
+                </div>
+              </div>
+            </>
         }
 
       </div>
@@ -117,17 +132,40 @@ const TopTen = (props) => {
   )
 }
 
-const TopTenCard = ({ movie, rank }) => {
+const TopTenCard = ({ movie, rank, template_id, id }) => {
+  //==creating movie image path start=== 
   const baseImageUrl = ENV.IMAGE_BASE_URL;
   const posterSize = ENV.POSTER_SIZE;
   let poster_path = "";
+  let backdrop_path = "";
 
   if (movie != undefined) {
     poster_path = `${baseImageUrl}${posterSize}${movie.poster_path}`;
+    backdrop_path = `${baseImageUrl}${posterSize}${movie.backdrop_path}`;
   }
+  //==creating movie image path end=== 
+
+  //===handle mouse hover start===
+  let hoverTimer;
+  const handleMouseEnter = (event, movieCardId, hoverCardId) => {
+    // console.log(movieCardId, hoverCardId)
+    hoverTimer = setTimeout(() => {
+      const HoverMovieCard = document.getElementById(hoverCardId);
+      HoverMovieCard.style.visibility = "visible";
+    }, 700);
+  }
+  const handleMouseLeave = () => {
+    clearTimeout(hoverTimer);
+  }
+  //===handle mouse hover end===
 
   return (
-    <CardContainer className='px-1'>
+    <CardContainer
+      id={`${template_id}-movie-card-${id}`}
+      className='px-1'
+      onMouseEnter={(event) => { handleMouseEnter(event, `${template_id}-movie-card-${id}`, `${template_id}-hover-card-${id}`) }}
+      onMouseLeave={(event) => { handleMouseLeave() }}
+    >
       <Link to={`/watchnow?id=${movie.id}`}>
         <Box>
           <div className="box">
