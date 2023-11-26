@@ -307,7 +307,7 @@ const WatchNow = ({ setProgress }) => {
   return (
     <Wrapper>
       <HeroComponent />
-      <Container className='my-5'>
+      <Container className='my-5 container'>
         {
           (Type == "tv") ? <AllEpisodes /> : ""
         }
