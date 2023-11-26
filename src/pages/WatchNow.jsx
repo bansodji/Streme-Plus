@@ -91,12 +91,23 @@ const AllEpisodesContainer = styled.div`
 
 const WatchNow = ({ setProgress }) => {
   const [movie, setMovie] = useState([]);
+  const [genreMovie, setGenreMovie] = useState([]);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const Id = queryParams.get('id');
   const Type = queryParams.get('type');
 
+  //===when url changes start===
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setProgress(10);
+    setTimeout(() => {
+      setProgress(100);
+    }, 200);
+  }, [location.pathname, location.search]);
+  //===when url changes end===
+  
   //==creating movie image path start=== 
   const baseImageUrl = ENV.IMAGE_BASE_URL;
   const posterSize = ENV.POSTER_SIZE;
@@ -144,13 +155,25 @@ const WatchNow = ({ setProgress }) => {
 
   const getDataByGenre = async () => {
     if (movie.genres != undefined) {
-      console.log(movie.genres[0].id)
+      let gerne_id = movie.genres[0].id;
+
+      try {
+        const API_KEY = ENV.API_KEY;
+        const response = await axios.get(`https://api.themoviedb.org/3/discover/${Type}?api_key=${API_KEY}&with_genres=${gerne_id}`);
+        setGenreMovie(response.data.results);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
     }
   }
 
   useEffect(() => {
     getData();
   }, [Id, Type]);
+
+  useEffect(() => {
+    getDataByGenre();
+  }, [movie]);
 
   useLayoutEffect(() => {
     setProgress(10);
@@ -250,7 +273,7 @@ const WatchNow = ({ setProgress }) => {
 
     const handleSelect = (selectedValue) => {
       CreateEpisode2(selectedValue[0]);
-      
+
     };
 
     useEffect(() => {
@@ -284,11 +307,19 @@ const WatchNow = ({ setProgress }) => {
   return (
     <Wrapper>
       <HeroComponent />
-      <Container className='container my-5'>
+      <Container className='my-5'>
         {
           (Type == "tv") ? <AllEpisodes /> : ""
         }
-        <GenreTemplate />
+        <Template
+          hover_track={true}
+          type={Type}
+          template_id={`${Type}-mlt`}
+          title="More Like This"
+          movies_list={genreMovie}
+          view_all={false}
+          episode={false}
+        />
       </Container>
     </Wrapper>
   );
