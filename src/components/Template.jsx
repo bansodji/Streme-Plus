@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { RiArrowRightSLine } from "react-icons/ri";
 import ISkeleton from './ISkeleton';
 import { MovieDetailsModal } from './Modal';
+import EpisodeCard from './EpisodeCard';
 
 const Container = styled.div`
     position: relative;
@@ -14,7 +15,7 @@ const Container = styled.div`
 const Template = (props) => {
     const settings = {
         dots: false,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 5,
@@ -47,12 +48,18 @@ const Template = (props) => {
             <div className="container-fluid">
                 <div className='d-flex justify-content-between align-items-center'>
                     <h5 className='heading'>{props.title}</h5>
-                    <Link to={props.href}>
-                        <h6 className='d-flex align-items-center hover'>
-                            View All
-                            <span className='fs-5' style={{ paddingBottom: 5 }}><RiArrowRightSLine /></span>
-                        </h6>
-                    </Link>
+                    {
+                        (props.view_all)
+                            ?
+                            <Link to={props.href}>
+                                <h6 className='d-flex align-items-center hover'>
+                                    View All
+                                    <span className='fs-5' style={{ paddingBottom: 5 }}><RiArrowRightSLine /></span>
+                                </h6>
+                            </Link>
+                            : ""
+                    }
+
                 </div>
                 {
                     (props.movies_list.length == 0)
@@ -62,28 +69,38 @@ const Template = (props) => {
                             <Slider {...settings}>
                                 {
                                     props.movies_list.map((data, index) => {
-                                        return (
-                                            // <div key={index}>
-                                            <MovieCard key={index} movie={data} template_id={props.template_id} id={index} />
-                                            // </div>
-                                        )
+                                        if (props.episode) {
+                                            return (
+                                                <EpisodeCard key={index} type={props.type} movie={data} template_id={props.template_id} id={index} />
+                                            )
+                                        }
+                                        else {
+                                            return (
+                                                <MovieCard key={index} type={props.type} movie={data} template_id={props.template_id} id={index} />
+                                            )
+                                        }
                                     })
                                 }
                             </Slider>
-                            <div className='hover-track'>
-                                <div className='grid-5 w-100 h-100'>
-                                    {
-                                        props.movies_list.map((data, index) => {
-                                            return (
-                                                // <div className="col-2" key={index} >
-                                                    <MovieDetailsModal key={index} movie={data} template_id={props.template_id} id={`hover-card-${index}`} />
-                                                // </div>
-                                            )
-                                        })
-                                    }
+                            {
+                                (props.hover_track)
+                                    ?
+                                    <div className='hover-track'>
+                                        <div className='grid-5 w-100 h-100'>
+                                            {
+                                                props.movies_list.map((data, index) => {
+                                                    return (
+                                                        // <div className="col-2" key={index} >
+                                                        <MovieDetailsModal key={index} type={props.type} movie={data} template_id={props.template_id} id={`hover-card-${index}`} />
+                                                        // </div>
+                                                    )
+                                                })
+                                            }
 
-                                </div>
-                            </div>
+                                        </div>
+                                    </div>
+                                    : ""
+                            }
                         </>
                 }
 

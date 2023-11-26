@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/GlobalStyle';
 import Home from './pages/Home';
@@ -11,6 +11,8 @@ import TV from './pages/TV';
 import WatchNow from './pages/WatchNow';
 import User from './pages/User';
 import Search from './pages/Search';
+import ScrollToTop from './components/ScrollToTop';
+import LoadingBar from 'react-top-loading-bar'
 
 const Main = styled.main`
     margin-left: ${({ theme }) => theme.other.layout};
@@ -109,25 +111,26 @@ const App = () => {
   }
 
   const [theme, setTheme] = useState(dark);
-
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+  const [progress, setProgress] = useState(0);
 
   return (
     <ThemeProvider theme={theme}>
+      <ScrollToTop />
       <GlobalStyle />
+      <LoadingBar
+        color={dark.colors.theme1}
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <Header setTheme={setTheme} light={light} dark={dark} />
       <Main>
         <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route exact path='/movies' element={<Movies />} />
-          <Route exact path='/tv' element={<TV />} />
-          <Route exact path='/watchnow' element={<WatchNow />} />
-          <Route exact path='/user' element={<User />} />
-          <Route exact path='/search' element={<Search />} />
+          <Route exact path='/' element={<Home setProgress={setProgress} />} />
+          <Route exact path='/movies' element={<Movies setProgress={setProgress} />} />
+          <Route exact path='/tv' element={<TV setProgress={setProgress} />} />
+          <Route exact path='/watchnow' element={<WatchNow setProgress={setProgress} />} />
+          <Route exact path='/user' element={<User setProgress={setProgress} />} />
+          <Route exact path='/search' element={<Search setProgress={setProgress} />} />
           <Route path="*" element={<Home />} />
         </Routes>
         <Footer />

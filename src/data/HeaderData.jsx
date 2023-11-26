@@ -1,12 +1,11 @@
 import React from 'react';
-import { IoHomeOutline, IoVideocamOutline, IoTvOutline, IoSearchOutline, IoPersonCircleOutline, IoHome, IoVideocam, IoTv, IoPersonCircle, IoSearch } from "react-icons/io5";
-import { BiHomeAlt2, BiSolidHomeAlt2 } from "react-icons/bi";
-import { AiFillHome,AiOutlineHome } from "react-icons/ai";
+import { IoVideocamOutline, IoTvOutline, IoSearchOutline, IoPersonCircleOutline, IoVideocam, IoTv, IoPersonCircle, IoSearch } from "react-icons/io5";
+import { GoHome,GoHomeFill  } from "react-icons/go";
 
 export const NavListOutline = {
     "user": <IoPersonCircleOutline />,
     "search": <IoSearchOutline />,
-    "home": <AiOutlineHome />,
+    "home": <GoHome />,
     "movies": <IoVideocamOutline />,
     "tv": <IoTvOutline />
 };
@@ -14,7 +13,7 @@ export const NavListOutline = {
 export const NavListSolid = {
     "user": <IoPersonCircle />,
     "search": <IoSearch />,
-    "home": <AiFillHome />,
+    "home": <GoHomeFill />,
     "movies": <IoVideocam />,
     "tv": <IoTv />
 };

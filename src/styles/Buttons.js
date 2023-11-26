@@ -82,6 +82,26 @@ export const WhiteButton = styled.button`
   }
 `;
 
+export const WhiteButton2 = styled.button`
+  background-color: ${({ theme }) => theme.button.white};
+  border: none;
+  outline: none;
+  padding: 0;
+  font-size: 1rem;
+  padding: 6px 10px;
+  width: 100%;
+  height: 3rem;
+  color: ${({ theme }) => theme.button.footer};
+  border-radius: 8px;
+  font-weight: 500;
+
+  svg{
+    color: ${({ theme }) => theme.colors.footer};
+    padding-bottom: 2px;
+    font-size: 1.2rem;
+  }
+`;
+
 export const SqIconBtn = styled.button`
   width: 3.5rem;
   height: 3rem;
@@ -89,4 +109,14 @@ export const SqIconBtn = styled.button`
   border: none;
   background-color: ${({ theme }) => theme.colors.grey};
   color: ${({ theme }) => theme.colors.white};
+`;
+
+export const ChipBtn = styled.button`
+  border: none;
+  outline: none;
+  background-color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colors.white};
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 13px;
 `;

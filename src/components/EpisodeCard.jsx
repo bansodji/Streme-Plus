@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const Box = styled.div`
     width: 100%;
-    height: 100%;
+    height: 90%;
     position: relative;
     border-radius: 4px;
     
@@ -44,11 +44,8 @@ const Box = styled.div`
         }
     }
 
-    .box-overlay{
-        position: absolute;
-        width: inherit;
-        height: inherit;
-        top: 0;
+    .box-details{
+        
     }
 
     .text{
@@ -58,7 +55,7 @@ const Box = styled.div`
 
 `;
 
-const MovieCard = ({ movie, id, template_id, type }) => {
+const EpisodeCard = ({ movie, id, template_id, type }) => {
     //==creating movie image path start=== 
     const baseImageUrl = ENV.IMAGE_BASE_URL;
     const posterSize = ENV.POSTER_SIZE;
@@ -76,10 +73,10 @@ const MovieCard = ({ movie, id, template_id, type }) => {
     const handleMouseEnter = (event, movieCardId, hoverCardId) => {
         hoverTimer = setTimeout(() => {
             const HoverMovieCard = document.getElementById(hoverCardId);
-            (HoverMovieCard != null) ?HoverMovieCard.style.visibility = "visible" : "";
+            (HoverMovieCard != null) ? HoverMovieCard.style.visibility = "visible" : "";
         }, ENV.CARD_DELAY);
     }
-    const handleMouseLeave = () => {        
+    const handleMouseLeave = () => {
         clearTimeout(hoverTimer);
     }
     //===handle mouse hover end===
@@ -91,17 +88,18 @@ const MovieCard = ({ movie, id, template_id, type }) => {
             onMouseEnter={(event) => { handleMouseEnter(event, `${template_id}-movie-card-${id}`, `${template_id}-hover-card-${id}`) }}
             onMouseLeave={(event) => { handleMouseLeave() }}
         >
-            <Link to={`/watchnow?id=${movie.id}&type=${type}`}>
-                <Box>
-                    <div className="box">
-                        <img src={poster_path} alt={movie.title} loading="lazy" />
-                    </div>
-                    <div className="box-overlay fff"></div>
-                </Box>
-            </Link>
+
+            <Box>
+                <div className="box">
+                    <img src={poster_path} alt={movie.title} loading="lazy" />
+                </div>
+                <div className="box-details fff">
+                    <span className='text fs-6'>{movie.title}</span>
+                </div>
+            </Box>
 
         </Container>
     )
 }
 
-export default MovieCard;
+export default EpisodeCard;

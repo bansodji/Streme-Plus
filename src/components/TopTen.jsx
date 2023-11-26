@@ -60,7 +60,7 @@ const Box = styled.div`
 const TopTen = (props) => {
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
@@ -89,12 +89,18 @@ const TopTen = (props) => {
       <div className="container-fluid">
         <div className='d-flex justify-content-between align-items-center'>
           <h5 className='heading'>{props.title}</h5>
-          <Link to={props.href}>
-            <h6 className='d-flex align-items-center hover'>
-              View All
-              <span className='fs-5' style={{ paddingBottom: 5 }}><RiArrowRightSLine /></span>
-            </h6>
-          </Link>
+          {
+            (props.view_all)
+              ?
+              <Link to={props.href}>
+                <h6 className='d-flex align-items-center hover'>
+                  View All
+                  <span className='fs-5' style={{ paddingBottom: 5 }}><RiArrowRightSLine /></span>
+                </h6>
+              </Link>
+              : ""
+          }
+
         </div>
         {
           (props.movies_list.length == 0)
@@ -106,24 +112,29 @@ const TopTen = (props) => {
                   props.movies_list.map((data, index) => {
                     return (
                       <div key={index} style={{ margin: "0 40px" }}>
-                        <TopTenCard movie={data} rank={index + 1} template_id={props.template_id} id={index} />
+                        <TopTenCard type={props.type} movie={data} rank={index + 1} template_id={props.template_id} id={index} />
                       </div>
                     )
                   })
                 }
               </Slider>
-              <div className='hover-track'>
-                <div className='grid-5 w-100 h-100'>
-                  {
-                    props.movies_list.map((data, index) => {
-                      return (
-                        <MovieDetailsModal key={index} movie={data} template_id={props.template_id} id={`hover-card-${index}`} />
-                      )
-                    })
-                  }
+              {
+                (props.hover_track)
+                  ?
+                  <div className='hover-track'>
+                    <div className='grid-5 w-100 h-100'>
+                      {
+                        props.movies_list.map((data, index) => {
+                          return (
+                            <MovieDetailsModal key={index} type={props.type} movie={data} template_id={props.template_id} id={`hover-card-${index}`} />
+                          )
+                        })
+                      }
+                    </div>
+                  </div>
+                  : ""
+              }
 
-                </div>
-              </div>
             </>
         }
 
@@ -132,7 +143,7 @@ const TopTen = (props) => {
   )
 }
 
-const TopTenCard = ({ movie, rank, template_id, id }) => {
+const TopTenCard = ({ movie, rank, template_id, id, type }) => {
   //==creating movie image path start=== 
   const baseImageUrl = ENV.IMAGE_BASE_URL;
   const posterSize = ENV.POSTER_SIZE;
@@ -152,7 +163,7 @@ const TopTenCard = ({ movie, rank, template_id, id }) => {
     hoverTimer = setTimeout(() => {
       const HoverMovieCard = document.getElementById(hoverCardId);
       HoverMovieCard.style.visibility = "visible";
-    }, 700);
+    }, ENV.CARD_DELAY);
   }
   const handleMouseLeave = () => {
     clearTimeout(hoverTimer);
@@ -166,7 +177,7 @@ const TopTenCard = ({ movie, rank, template_id, id }) => {
       onMouseEnter={(event) => { handleMouseEnter(event, `${template_id}-movie-card-${id}`, `${template_id}-hover-card-${id}`) }}
       onMouseLeave={(event) => { handleMouseLeave() }}
     >
-      <Link to={`/watchnow?id=${movie.id}`}>
+      <Link to={`/watchnow?id=${movie.id}&type=${type}`}>
         <Box>
           <div className="box">
             <img src={poster_path} alt={movie.title} loading="lazy" />

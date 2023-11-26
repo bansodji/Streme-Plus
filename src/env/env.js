@@ -4,4 +4,5 @@ export const ENV = {
     API_KEY: "cd77a7698cf357650fa2e44bae3c25bc",
     IMAGE_BASE_URL: "https://image.tmdb.org/t/p/",
     POSTER_SIZE: "w500",
+    CARD_DELAY: 800
 }

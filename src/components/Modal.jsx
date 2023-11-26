@@ -15,6 +15,7 @@ const MovieDetailsModalContainer = styled.div`
     position: absolute;
     top: 0;
     visibility: hidden;
+    /*transition: visibility 0.7s, opacity 0.7s ease-in-out;*/
     /* display: none; */
 
     @media(max-width:${({ theme }) => theme.screen.lg}){
@@ -72,7 +73,7 @@ const MovieDetailsModalContainer = styled.div`
 
 `;
 
-const MovieDetailsModal = ({ movie, id, template_id }) => {
+const MovieDetailsModal = ({ movie, id, template_id, type }) => {
     //==creating movie image path start=== 
     const baseImageUrl = ENV.IMAGE_BASE_URL;
     const posterSize = ENV.POSTER_SIZE;
@@ -104,7 +105,7 @@ const MovieDetailsModal = ({ movie, id, template_id }) => {
                     </div>
                     <div className='details p-3'>
                         <div className='d-flex buttons'>
-                            <Link className='w-100' to={`watchnow?id=${movie.id}`}>
+                            <Link className='w-100' to={`/watchnow?id=${movie.id}&type=${type}`}>
                                 <WhiteButton>
                                     <IoPlay />
                                     Watch Now
