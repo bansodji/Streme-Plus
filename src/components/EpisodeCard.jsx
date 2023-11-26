@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ENV } from '../env/env';
-import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     width: 100%;
@@ -44,14 +43,10 @@ const Box = styled.div`
         }
     }
 
-    .box-details{
-        
+    .text{
+        color: ${({theme})=>theme.colors.text};
     }
 
-    .text{
-        font-size: 12px;
-        color: ${({ theme }) => theme.colors.white};
-    }
 
 `;
 
@@ -94,7 +89,7 @@ const EpisodeCard = ({ movie, id, template_id, type }) => {
                     <img src={poster_path} alt={movie.title} loading="lazy" />
                 </div>
                 <div className="box-details fff">
-                    <span className='text fs-6'>{movie.title}</span>
+                    <span className='fs-6 text font-400'>{movie.title}</span>
                 </div>
             </Box>
 

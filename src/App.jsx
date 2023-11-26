@@ -132,6 +132,7 @@ const App = () => {
           <Route exact path='/watchnow' element={<WatchNow setProgress={setProgress} />} />
           <Route exact path='/user' element={<User setProgress={setProgress} />} />
           <Route exact path='/search' element={<Search setProgress={setProgress} />} />
+          <Route exact path='/subscribe' element={<User setProgress={setProgress} />} />
           <Route exact path='/viewall/:id' element={<ViewAll setProgress={setProgress}/>} />
           <Route path="*" element={<Home />} />
         </Routes>
