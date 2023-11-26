@@ -48,4 +48,26 @@ const ISkeleton = ({ ItemCount }) => {
     );
 }
 
+
+const ISkeletonRow = ({ ItemCount }) => {
+
+    // Create an array of length ItemCount to repeat the Skeleton component
+    const skeletonItems = Array.from({ length: ItemCount }, (_, index) => (
+        <div className='mx-2' key={index}>
+            <Stack spacing={1} >
+                <Skeleton variant="rectangular" width="90%" height={200} />
+            </Stack>
+        </div>
+    ));
+
+    return (
+        <div className="row g-2">
+            <div className="col-lg-6 col-md-5 col-sm-4 col-3">
+                {skeletonItems}
+            </div>
+        </div>
+    );
+}
+
 export default ISkeleton;
+export { ISkeletonRow };

@@ -13,6 +13,7 @@ import User from './pages/User';
 import Search from './pages/Search';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingBar from 'react-top-loading-bar'
+import ViewAll from './pages/ViewAll';
 
 const Main = styled.main`
     margin-left: ${({ theme }) => theme.other.layout};
@@ -131,6 +132,7 @@ const App = () => {
           <Route exact path='/watchnow' element={<WatchNow setProgress={setProgress} />} />
           <Route exact path='/user' element={<User setProgress={setProgress} />} />
           <Route exact path='/search' element={<Search setProgress={setProgress} />} />
+          <Route exact path='/viewall/:id' element={<ViewAll setProgress={setProgress}/>} />
           <Route path="*" element={<Home />} />
         </Routes>
         <Footer />

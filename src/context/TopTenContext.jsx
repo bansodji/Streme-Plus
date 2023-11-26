@@ -16,8 +16,8 @@ const TopTenContext = ({ children }) => {
         try {
             const response1 = await axios.get(`${movie_endpoint}/top_rated?page=3&api_key=${API_KEY}`);
             const response2 = await axios.get(`${tv_endpoint}/top_rated?page=10&api_key=${API_KEY}`);
-            setTop10Movie(response1.data.results)
-            setTop10TV(response2.data.results)
+            setTop10Movie(response1.data.results);
+            setTop10TV(response2.data.results);
         } catch (error) {
             console.error(error);
         }
