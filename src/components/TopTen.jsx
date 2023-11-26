@@ -86,7 +86,7 @@ const TopTen = (props) => {
   };
   return (
     <Container className='my-4'>
-      <div className="container-fluid">
+      <div className="">
         <div className='d-flex justify-content-between align-items-center'>
           <h5 className='heading'>{props.title}</h5>
           {

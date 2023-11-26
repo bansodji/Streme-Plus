@@ -11,7 +11,6 @@ import { FaPlus } from "react-icons/fa6";
 import { IoPlay } from "react-icons/io5";
 import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
-import GenreTemplate from '../components/GenreTemplate';
 import IPSelect from '../components/IPSelect';
 import Template from '../components/Template';
 
