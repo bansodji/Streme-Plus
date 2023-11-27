@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
 import IPSelect from '../components/IPSelect';
 import Template from '../components/Template';
+import { ISkeletonBig } from '../components/ISkeleton';
 
 const heroHeight = "100vh";
 const heroWidth = "100%";
@@ -106,7 +107,7 @@ const WatchNow = ({ setProgress }) => {
     }, 200);
   }, [location.pathname, location.search]);
   //===when url changes end===
-  
+
   //==creating movie image path start=== 
   const baseImageUrl = ENV.IMAGE_BASE_URL;
   const posterSize = ENV.POSTER_SIZE;
@@ -182,6 +183,7 @@ const WatchNow = ({ setProgress }) => {
   }, []);
 
   const HeroComponent = () => {
+    console.log(movie);
     return (
       <>
         <Hero style={{ backgroundImage: `url(${backdrop_path})` }}>
@@ -305,7 +307,10 @@ const WatchNow = ({ setProgress }) => {
 
   return (
     <Wrapper>
-      <HeroComponent />
+      {
+        movie.length == undefined ? <HeroComponent /> : <ISkeletonBig/>
+      }
+
       <Container className='my-5 container'>
         {
           (Type == "tv") ? <AllEpisodes /> : ""

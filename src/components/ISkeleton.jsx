@@ -65,5 +65,15 @@ const ISkeletonRow = ({ ItemCount }) => {
     );
 }
 
+const ISkeletonBig = ({ ItemCount }) => {
+    return (
+        <div className="col-12 mt-3">
+            <Stack spacing={1} >
+                <Skeleton variant="rectangular" width="100%" height={400} />
+            </Stack>
+        </div>
+    );
+}
+
 export default ISkeleton;
-export { ISkeletonRow };
+export { ISkeletonRow, ISkeletonBig };
