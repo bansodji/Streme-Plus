@@ -14,6 +14,7 @@ import Search from './pages/Search';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingBar from 'react-top-loading-bar'
 import ViewAll from './pages/ViewAll';
+import PreLoader from './components/PreLoader';
 
 const Main = styled.main`
     margin-left: ${({ theme }) => theme.other.layout};
@@ -118,6 +119,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <ScrollToTop />
       <GlobalStyle />
+      {/* <PreLoader/> */}
       <LoadingBar
         color={dark.colors.theme1}
         progress={progress}
