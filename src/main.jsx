@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AllMovieContext } from './context/AllMovieContext.jsx';
 import { AllTVContext } from './context/AllTVContext.jsx';
 import { TopTenContext } from './context/TopTenContext.jsx';
+import { Lines } from 'react-preloaders';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AllMovieContext>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <TopTenContext>
         <BrowserRouter>
           <App />
+          <Lines color={"#f1584a"} background="#fab75d" animation="slide-right"/>
         </BrowserRouter>
       </TopTenContext>
     </AllTVContext>

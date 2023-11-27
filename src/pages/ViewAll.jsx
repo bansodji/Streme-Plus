@@ -88,11 +88,18 @@ const ViewAll = ({ setProgress }) => {
                 }
             </div>
 
-            <center>
-                <div className={`col-6 col-sm-3 my-4 ${LoadButton?"":"d-none"}`}>
-                    <WhiteButton onClick={handleLoadMoreClick}>Load More</WhiteButton>
-                </div>
-            </center>
+            {
+                (movies != null)
+                    ?
+                    <center>
+                        <div className={`col-6 col-sm-3 my-4 ${LoadButton ? "" : "d-none"}`}>
+                            <WhiteButton onClick={handleLoadMoreClick}>Load More</WhiteButton>
+                        </div>
+                    </center>
+                    :
+                    ""
+            }
+
 
         </Wrapper>
     )
