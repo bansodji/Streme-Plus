@@ -61,6 +61,10 @@ const Box = styled.div`
           left: -13%;
           transform: translateY(-100%);
           text-shadow: 2px 2px #000;
+
+          @media(max-width: ${({ theme }) => theme.screen.sm}){
+            left: -15%;
+          }
         }
     }
 `;

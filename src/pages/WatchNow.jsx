@@ -183,7 +183,6 @@ const WatchNow = ({ setProgress }) => {
   }, []);
 
   const HeroComponent = () => {
-    console.log(movie);
     return (
       <>
         <Hero style={{ backgroundImage: `url(${backdrop_path})` }}>

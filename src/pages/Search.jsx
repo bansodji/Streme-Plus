@@ -73,7 +73,7 @@ const Search = ({ setProgress }) => {
 
   const fetchData = async (searchTerm) => {
     try {
-      const response = await axios.get(
+      const response1 = await axios.get(
         `https://api.themoviedb.org/3/search/movie`,
         {
           params: {
@@ -88,7 +88,23 @@ const Search = ({ setProgress }) => {
           }
         }
       );
-      setSearchData(response.data.results);
+      const response2 = await axios.get(
+        `https://api.themoviedb.org/3/search/tv`,
+        {
+          params: {
+            query: searchTerm,
+            include_adult: false,
+            language: 'en-US',
+            page: 1
+          },
+          headers: {
+            'accept': 'application/json',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZDc3YTc2OThjZjM1NzY1MGZhMmU0NGJhZTNjMjViYyIsInN1YiI6IjY1NWEzMTE3YjU0MDAyMTRkMTE3ZmMyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.K-7sICniMIplbWd7gsRIdb-h9I9zWs4GDNJ26SheDvQ'
+          }
+        }
+      );
+      let response = [...response1.data.results, ...response2.data.results];
+      setSearchData(response);
     } catch (error) {
       console.error(error);
     }
@@ -111,7 +127,7 @@ const Search = ({ setProgress }) => {
               popular_movies.map((data, index) => {
                 return (
                   <div className="col-lg-2 col-md-3 col-sm-3 col-4" key={index}>
-                    <MovieCard key={index} type="movie" movie={data} template_id={`p`} id={index} />
+                    <MovieCard key={index} type={`${data.release_date? "movie" : "tv"}`} movie={data} template_id={`p`} id={index} />
                   </div>
                 )
               })
