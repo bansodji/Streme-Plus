@@ -34,6 +34,10 @@ const HeaderLg = styled.div`
 
     .nav-item{
         font-size: 1.4rem;
+
+        &:hover{
+            scale: 1.2;
+        }
     }
 
     ul:hover > .nav-item a{        

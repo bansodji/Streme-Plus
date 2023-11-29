@@ -101,7 +101,7 @@ const Search = ({ setProgress }) => {
 
   const PopularSearches = ({ popular_movies, heading }) => {
     return (
-      <div className="container popular-searches">
+      <div className="container popular-searches mt-4">
         <h4 className='title heading'>{heading}</h4>
         <div className="row gx-2 gy-3">
           {
