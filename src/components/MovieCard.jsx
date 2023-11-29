@@ -41,6 +41,7 @@ const Box = styled.div`
             width: inherit;
             height: inherit;
             object-fit: cover;
+            object-position: top;
         }
     }
 

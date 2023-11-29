@@ -9,6 +9,13 @@ import { MovieDetailsModal } from './Modal';
 
 const Container = styled.div`
     position: relative;
+    .slick-list {margin: 0 -15px;}
+    .slick-slide>div {padding: 0 15px;}
+
+    @media(max-width: ${({ theme }) => theme.screen.sm}){
+      .slick-list {margin: 0 -9px;}
+      .slick-slide>div {padding: 0 9px;}
+    }
 `;
 
 const CardContainer = styled.div`
@@ -36,7 +43,8 @@ const Box = styled.div`
             border-radius: 4px !important;
             width: inherit;
             height: inherit;
-            object-fit: scale-down;
+            object-fit: cover;
+            object-position: top;
         }
     }
 
@@ -50,7 +58,7 @@ const Box = styled.div`
           position: absolute;
           font-weight: 600;
           top:110%;
-          left: 0;
+          left: -13%;
           transform: translateY(-100%);
           text-shadow: 2px 2px #000;
         }
@@ -69,8 +77,8 @@ const TopTen = (props) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           infinite: true,
         }
       },
